@@ -1,0 +1,6 @@
+---
+- name: Install GIT
+  apt: pkg=git state=present
+
+- name: Install htop
+  apt: pkg=htop state=present
