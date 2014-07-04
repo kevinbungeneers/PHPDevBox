@@ -1,0 +1,13 @@
+---
+- name: "Add nginx PPA"
+  apt_repository:
+    repo: ppa:nginx/stable
+    state: present
+    update_cache: yes
+
+- name: Install packages
+  apt:
+    pkg: "{{ item }}"
+    state: present
+  with_items:
+    - nginx

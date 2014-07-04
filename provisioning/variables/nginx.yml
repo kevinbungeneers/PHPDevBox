@@ -1,0 +1,6 @@
+---
+nginx_sites:
+  - site:
+      name: TestSite
+      server_name: testsite.dev
+      template: symfony

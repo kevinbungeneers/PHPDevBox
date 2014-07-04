@@ -1,0 +1,95 @@
+user {{ nginx_user }} {% if nginx_group %} {{ nginx_group }} {% endif %};
+worker_processes {{ nginx_worker_processes }};
+pid /run/nginx.pid;
+
+events {
+    worker_connections {{ nginx_worker_connections }};
+    multi_accept {{ nginx_multi_accept }};
+}
+
+http {
+
+    ##
+    # Basic Settings
+    ##
+
+    sendfile {{ nginx_sendfile }};
+    tcp_nopush {{ nginx_tcp_nopush }};
+    tcp_nodelay {{ nginx_tcp_nodelay }};
+    keepalive_timeout {{ nginx_keepalive_timeout }};
+    types_hash_max_size {{ nginx_hash_max_size }};
+    server_tokens {{ nginx_server_tokens }};
+
+    server_names_hash_bucket_size {{ nginx_server_names_hash_bucket_size }};
+    server_name_in_redirect {{ nginx_server_name_in_redirect }};
+
+    include /etc/nginx/mime.types;
+    default_type application/octet-stream;
+
+    ##
+    # Logging Settings
+    ##
+
+    access_log {{ nginx_log_dir }}/access.log;
+    error_log {{ nginx_log_dir }}/error.log;
+
+    ##
+    # Gzip Settings
+    ##
+
+    gzip {{ nginx_gzip }};
+    gzip_disable {{ nginx_gzip_disable }};
+
+    gzip_vary {{ nginx_gzip_vary }};
+    gzip_proxied {{ nginx_gzip_proxied }};
+    gzip_comp_level {{ nginx_gzip_comp_level }};
+    gzip_buffers {{ nginx_gzip_buffers }};
+    gzip_http_version {{ nginx_gzip_http_version }};
+    gzip_types {{ nginx_gzip_types | join(' ') }};
+
+    ##
+    # nginx-naxsi config
+    ##
+    # Uncomment it if you installed nginx-naxsi
+    ##
+
+    #include /etc/nginx/naxsi_core.rules;
+
+    ##
+    # nginx-passenger config
+    ##
+    # Uncomment it if you installed nginx-passenger
+    ##
+
+    #passenger_root /usr;
+    #passenger_ruby /usr/bin/ruby;
+
+    ##
+    # Virtual Host Configs
+    ##
+
+    include /etc/nginx/conf.d/*.conf;
+    include /etc/nginx/sites-enabled/*;
+}
+
+
+#mail {
+#   # See sample authentication script at:
+#   # http://wiki.nginx.org/ImapAuthenticateWithApachePhpScript
+#
+#   # auth_http localhost/auth.php;
+#   # pop3_capabilities "TOP" "USER";
+#   # imap_capabilities "IMAP4rev1" "UIDPLUS";
+#
+#   server {
+#       listen     localhost:110;
+#       protocol   pop3;
+#       proxy      on;
+#   }
+#
+#   server {
+#       listen     localhost:143;
+#       protocol   imap;
+#       proxy      on;
+#   }
+#}

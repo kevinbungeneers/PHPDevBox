@@ -1,0 +1,20 @@
+server {
+    server_name {{ item.site.server_name}} www.{{ item.site.server_name }};
+    root {{ nginx_www_dir }}/{{ item.site.name }}/web;
+
+    location / {
+        # try to serve file directly, fallback to app.php
+        try_files $uri /app.php$is_args$args;
+    }
+
+    location ~ ^/(app|app_dev|config)\.php(/|$) {
+        fastcgi_pass unix:/var/run/php5-fpm.sock;
+        fastcgi_split_path_info ^(.+\.php)(/.*)$;
+        include fastcgi_params;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        fastcgi_param HTTPS off;
+    }
+
+    error_log {{ nginx_log_dir }}/{{ item.site.name }}_error.log;
+    access_log {{ nginx_log_dir }}/{{ item.site.name }}_access.log;
+}
