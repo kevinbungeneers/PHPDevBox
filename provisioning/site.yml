@@ -5,7 +5,9 @@
   vars_files:
     - variables/nginx.yml
     - variables/php.yml
+    - variables/mysql.yml
   roles:
     - common
     - nginx
     - php
+    - mysql

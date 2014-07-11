@@ -1,0 +1,10 @@
+---
+- name: Create users
+  mysql_user:
+    name: "{{ item.name }}"
+    password: "{{ item.password | default(item.name) }}"
+    priv: "{{ item.priv | default('*.*:ALL') }}"
+    host: "{{ item.host | default('localhost') }}"
+    state: present
+  with_items: mysql_users
+  when: mysql_users | length > 0
