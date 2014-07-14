@@ -9,7 +9,7 @@
 - name: Install nginx vhosts
   template:
     src: "etc/nginx/sites-available/{{ item.site.template }}.j2"
-    dest: "/etc/nginx/sites-available/{{ item.site.name }}"
+    dest: "/etc/nginx/sites-enabled/{{ item.site.name }}"
   with_items: nginx_sites
   when: nginx_sites | length > 0
   notify: Reload nginx
