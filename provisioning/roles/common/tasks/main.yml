@@ -4,3 +4,6 @@
 
 - name: Install htop
   apt: pkg=htop state=present
+
+- name: Install CURL
+  apt: pkg=curl state=present
