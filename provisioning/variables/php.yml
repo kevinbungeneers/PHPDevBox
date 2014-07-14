@@ -13,3 +13,4 @@ php_packages:
   - php5-imap
   - php5-imagick
   - php5-json
+  - php-apc

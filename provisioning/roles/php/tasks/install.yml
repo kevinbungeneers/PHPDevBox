@@ -14,3 +14,6 @@
     pkg: "{{ item }}"
     state: present
   with_items: php_packages
+
+- name: Install Composer
+  shell: curl -sS https://getcomposer.org/installer | php && mv -f composer.phar /usr/local/bin/composer creates=/usr/local/bin/composer
