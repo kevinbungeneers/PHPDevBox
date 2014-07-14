@@ -2,8 +2,8 @@
 nginx_www_dir: '/var/www'
 nginx_log_dir: '/var/log/nginx'
 
-nginx_user: 'www-data'
-nginx_group: 'www-data'
+nginx_user: 'vagrant'
+nginx_group: 'vagrant'
 nginx_worker_processes: 4
 
 nginx_worker_connections: 768
@@ -15,7 +15,7 @@ nginx_tcp_nodelay: 'on'
 nginx_keepalive_timeout: 65
 nginx_hash_max_size: 2048
 nginx_server_tokens: 'on'
-nginx_server_names_hash_bucket_size: '32|64|128'
+nginx_server_names_hash_bucket_size: '64'
 nginx_server_name_in_redirect: 'off'
 
 nginx_gzip: 'on'
@@ -23,7 +23,7 @@ nginx_gzip_disable: 'msie6'
 nginx_gzip_vary: 'off'
 nginx_gzip_proxied: 'off'
 nginx_gzip_comp_level: 1
-nginx_gzip_buffers: '32 4k|16 8k'
+nginx_gzip_buffers: '32 4k'
 nginx_gzip_http_version: '1.1'
 nginx_gzip_types:
   - text/html
