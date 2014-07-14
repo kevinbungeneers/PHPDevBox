@@ -17,3 +17,4 @@
   template:
     src: etc/php5/fpm/pool.d/www.conf
     dest: /etc/php5/fpm/pool.d/www.conf
+  notify: Restart PHP5-FPM
