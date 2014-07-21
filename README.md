@@ -9,6 +9,7 @@ there is no excessive use of variables and the roles used are only tested with U
 * PHP 5.5
 * Composer
 * MySQL 5.6
+* Nodejs
 
 ## Requirements
 [VirtualBox](http://www?virtualbox.org) and [Vagrant](http://www.vagrantup.com)
