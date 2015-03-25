@@ -4,9 +4,7 @@
   sudo: True
   vars_files:
     - variables/nginx.yml
-    - variables/php.yml
     - variables/nodejs.yml
   roles:
     - nginx
-    - php
     - nodejs
