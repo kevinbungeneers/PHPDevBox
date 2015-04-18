@@ -1,18 +1,19 @@
-# Vagrant PHP Development box
-A simple Ubuntu 14.04 Vagrant Box for developing web applications in PHP, provisioned with Ansible.
-
-I tried to keep the provisioning of this box as simple as I could. This means that
-there is no excessive use of variables and the roles used are only tested with Ubuntu 14.04.
+# PHP Development box
+A simple Ubuntu 14.04 Vagrant Box for developing web applications in PHP, provisioned with Ansible. This box uses a base image created by [PHPacker](https://github.com/kevinbungeneers/PHPacker) in order to cut down on the provisioning time.
 
 ## What's included?
 * Nginx
-* PHP 5.5
+* PHP 5.6
 * Composer
-* MySQL 5.6
+* PostgreSQL 9.4
 * Nodejs
 
 ## Requirements
-[VirtualBox](http://www?virtualbox.org) and [Vagrant](http://www.vagrantup.com)
+* [VirtualBox](http://virtualbox.org)
+* [Packer](http://packer.io)
+* [Ansible](http://ansible.com)
+* [Vagrant](http://vagrantup.com)
+* [PHPacker](https://github.com/kevinbungeneers/PHPacker)
 
 ## Getting started
 ```bash
