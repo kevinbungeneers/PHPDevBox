@@ -1,0 +1,7 @@
+---
+  - name: Install gems
+    gem:
+      name: "{{ item }}"
+      state: present
+      user_install: no
+    with_items: ruby_gems
