@@ -13,6 +13,9 @@
   file:
     path: "{{ nginx_www_dir }}/{{ item.site.name }}"
     state: directory
+    owner: vagrant
+    group: vagrant
+    recurse: yes
   with_items: nginx_sites
   when: nginx_sites | length > 0
 
