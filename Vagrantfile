@@ -21,6 +21,23 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     ansible.limit = "all"
   end
 
+  if Vagrant.has_plugin?("vagrant-hostsupdater")
+    # Require YAML module
+    require 'yaml'
+
+    # Read YAML file with box details
+    sites = YAML.load_file('provisioning/variables/nginx.yml')
+
+    domains = []
+
+    # Iterate through entries in YAML file
+    sites['nginx_sites'].each do |site|
+      domains.push(site['site']['server_name'])
+    end
+
+    config.hostsupdater.aliases = domains
+  end
+
   config.ssh.forward_agent = true
 
 end
