@@ -15,6 +15,9 @@ A simple Ubuntu 14.04 Vagrant Box for developing web applications in PHP, provis
 * [Vagrant](http://vagrantup.com)
 * [PHPacker](https://github.com/kevinbungeneers/PHPacker)
 
+## Optional
+* [Vagrant Hostsupdater](https://github.com/cogitatio/vagrant-hostsupdater)
+
 ## Getting started
 ```bash
 $ git clone https://github.com/kevinbungeneers/PhpDevBox.git && cd PhpDevBox
