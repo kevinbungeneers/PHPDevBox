@@ -3,8 +3,12 @@
   user: vagrant
   sudo: True
   vars_files:
+    - variables/dotfiles.yml
     - variables/nginx.yml
     - variables/nodejs.yml
+    - variables/ruby.yml
   roles:
+    - dotfiles
     - nginx
     - nodejs
+    - ruby
