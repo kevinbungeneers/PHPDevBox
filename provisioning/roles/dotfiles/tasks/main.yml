@@ -1,0 +1,12 @@
+---
+  - name: Install Gitconfig
+    copy:
+      src: gitconfig
+      dest: ~vagrant/.gitconfig
+      owner: vagrant
+      group: vagrant
+
+  - name: Install Gitconfig (user)
+    template:
+      src: gitconfig.user.j2
+      dest: ~vagrant/.gitconfig.user

@@ -6,5 +6,6 @@
     - variables/nginx.yml
     - variables/nodejs.yml
   roles:
+    - dotfiles
     - nginx
     - nodejs
