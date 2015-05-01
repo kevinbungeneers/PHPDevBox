@@ -34,7 +34,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     config.vm.provision :shell, path: "provisioning/windows.sh"
   else
 
-    config.vm.synced_folder "./www", "/var/www/", type: "nfs"
     config.vm.synced_folder ".", "/vagrant", disabled: true
 
     config.vm.provision :ansible do |ansible|
