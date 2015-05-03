@@ -1,0 +1,8 @@
+---
+  - name: Configure SMB shares
+    template:
+      src: "etc_samba_smb.conf.j2"
+      dest: "/etc/samba/smb.conf"
+    when: nginx_sites | length > 0 and share_mode == "SMB"
+    notify:
+      - Reload SMB

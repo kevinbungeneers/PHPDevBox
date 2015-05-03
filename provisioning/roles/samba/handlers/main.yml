@@ -1,0 +1,12 @@
+---
+  - name: Restart SMB
+    service:
+      name: smbd
+      state: restarted
+      enabled: yes
+
+  - name: Reload SMB
+    service:
+      name: smbd
+      state: reloaded
+      enabled: yes

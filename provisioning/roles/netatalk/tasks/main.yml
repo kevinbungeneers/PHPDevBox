@@ -3,7 +3,7 @@
     template:
       src: "afp.conf.j2"
       dest: "/usr/local/etc/afp.conf"
-    when: nginx_sites | length > 0
+    when: nginx_sites | length > 0 and share_mode == "AFP"
     notify:
       - Reload avahi
       - Start Netatalk
