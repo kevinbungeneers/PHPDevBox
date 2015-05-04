@@ -1,12 +1,10 @@
 ---
-  - name: Restart SMB
+  - name: Start Samba
     service:
-      name: smbd
-      state: restarted
+      name: "{{ item }}"
+      state: started
       enabled: yes
-
-  - name: Reload SMB
-    service:
-      name: smbd
-      state: reloaded
-      enabled: yes
+    with_items:
+      - samba
+      - smbd
+      - nmbd

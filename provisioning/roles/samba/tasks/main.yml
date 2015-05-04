@@ -5,4 +5,4 @@
       dest: "/etc/samba/smb.conf"
     when: nginx_sites | length > 0 and share_mode == "SMB"
     notify:
-      - Reload SMB
+      - Start Samba
