@@ -1,0 +1,17 @@
+[Global]
+log file = /var/log/netatalk.log
+log level = default:note
+mimic model = RackMac
+guest account = vagrant
+zeroconf = yes
+uam list = uams_guest.so uams_dhx2.so
+vol preset = default
+
+[default]
+file perm = 0660
+directory perm = 0770
+
+{% for nginx_site in nginx_sites %}
+[{{ nginx_site.site.name }}]
+path = {{ nginx_www_dir }}/{{ nginx_site.site.name }}
+{% endfor %}

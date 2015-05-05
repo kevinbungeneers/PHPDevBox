@@ -1,0 +1,9 @@
+---
+  - name: Configure AFP shares
+    template:
+      src: "afp.conf.j2"
+      dest: "/usr/local/etc/afp.conf"
+    when: nginx_sites | length > 0 and share_mode == "AFP"
+    notify:
+      - Start Avahi
+      - Start Netatalk
