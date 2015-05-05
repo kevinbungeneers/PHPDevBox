@@ -5,6 +5,6 @@
       state: started
       enabled: yes
     with_items:
-      - samba
       - smbd
       - nmbd
+      - samba
