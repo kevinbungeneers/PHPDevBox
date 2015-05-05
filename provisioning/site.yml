@@ -3,6 +3,7 @@
   user: vagrant
   sudo: True
   vars_files:
+    - variables/sharing.yml
     - variables/dotfiles.yml
     - variables/nginx.yml
     - variables/nodejs.yml
@@ -13,3 +14,4 @@
     - nodejs
     - ruby
     - netatalk
+    - samba
