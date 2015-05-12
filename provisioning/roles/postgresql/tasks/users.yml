@@ -1,0 +1,26 @@
+---
+  - name: Add users
+    postgresql_user:
+      name: "{{ item.name }}"
+      password: "{{ item.password }}"
+      state: present
+      login_user: "{{ postgresql_admin_user }}"
+    sudo: yes
+    sudo_user: "{{ postgresql_admin_user }}"
+    with_items: postgresql_users
+    when: postgresql_users | length > 0
+
+
+  - name: Update user privileges
+    postgresql_user:
+      name: "{{ item.name }}"
+      db: "{{ item.db | default(omit) }}"
+      priv: "{{ item.priv | default(omit) }}"
+      state: present
+      login_host: "{{ item.host | default(omit) }}"
+      login_user: "{{ postgresql_admin_user }}"
+      role_attr_flags: "{{ item.role_attr_flags | default(omit) }}"
+    sudo: yes
+    sudo_user: "{{ postgresql_admin_user }}"
+    with_items: postgresql_user_privileges
+    when: postgresql_users | length > 0
