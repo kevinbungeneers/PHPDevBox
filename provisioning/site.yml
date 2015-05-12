@@ -10,6 +10,7 @@
     - variables/nodejs.yml
     - variables/ruby.yml
   roles:
+    - ntp
     - dotfiles
     - nginx
     - postgresql
