@@ -1,0 +1,12 @@
+---
+  postgresql_databases:
+    - name: testdb
+
+  postgresql_users:
+    - name: testuser
+      password: testuserpass
+
+  postgresql_user_privileges:
+    - name: testuser
+      db: testdb
+      priv: ALL

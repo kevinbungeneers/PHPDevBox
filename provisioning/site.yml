@@ -6,11 +6,13 @@
     - variables/sharing.yml
     - variables/dotfiles.yml
     - variables/nginx.yml
+    - variables/postgresql.yml
     - variables/nodejs.yml
     - variables/ruby.yml
   roles:
     - dotfiles
     - nginx
+    - postgresql
     - nodejs
     - ruby
     - netatalk

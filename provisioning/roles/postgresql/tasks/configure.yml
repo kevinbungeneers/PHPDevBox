@@ -1,0 +1,23 @@
+---
+  - name: Ensure the chosen locale is generated
+    locale_gen:
+      name: "{{ postgresql_locale }}"
+      state: present
+
+  - name: Configure PostgreSQL (pg_hba.conf)
+    template:
+      src: pg_hba.conf.j2
+      dest: /etc/postgresql/9.4/main/pg_hba.conf
+      owner: "{{ postgresql_service_user }}"
+      group: "{{ postgresql_service_group }}"
+      mode: 0640
+    notify: Restart PostgreSQL
+
+  - name: Configure PostgreSQL (postgresql.conf)
+    template:
+      src: postgresql.conf.j2
+      dest: /etc/postgresql/9.4/main/postgresql.conf
+      owner: "{{ postgresql_service_user }}"
+      group: "{{ postgresql_service_group }}"
+      mode: 0640
+    notify: Restart PostgreSQL
