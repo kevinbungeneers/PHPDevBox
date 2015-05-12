@@ -1,0 +1,29 @@
+---
+  postgresql_encoding: 'UTF-8'
+  postgresql_locale: 'en_US.UTF-8'
+
+  postgresql_admin_user: 'postgres'
+  postgresql_default_auth_method: 'trust'
+
+  postgresql_service_user: "{{ postgresql_admin_user }}"
+  postgresql_service_group: "{{ postgresql_admin_user }}"
+  postgresql_database_owner: "{{ postgresql_admin_user }}"
+
+  postgresql_pg_hba_default:
+    - { type: local, database: all, user: '{{ postgresql_admin_user }}', address: '', method: '{{ postgresql_default_auth_method }}', comment: '' }
+    - { type: local, database: all, user: all, address: '',             method: '{{ postgresql_default_auth_method }}', comment: '"local" is for Unix domain socket connections only' }
+    - { type: host,  database: all, user: all, address: '127.0.0.1/32', method: '{{ postgresql_default_auth_method }}', comment: 'IPv4 local connections:' }
+    - { type: host,  database: all, user: all, address: '::1/128',      method: '{{ postgresql_default_auth_method }}', comment: 'IPv6 local connections:' }
+
+  postgresql_pg_hba_passwd_hosts:
+    - all
+
+  postgresql_pg_hba_trust_hosts: []
+  postgresql_pg_hba_custom: []
+
+  postgresql_databases: []
+  postgresql_users: []
+  postgresql_user_privileges: []
+
+  postgresql_listen_addresses:
+    - '*'
